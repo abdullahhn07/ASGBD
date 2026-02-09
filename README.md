@@ -424,7 +424,66 @@ COPY Threads Completion          0          4                    26.520s
 
       Total import time          ✓    3919015   134.9 MB         45.459s
 
-isard@ahussain-servidor-mysql:~$ 
+isard@ahussain-servidor-mysql:~$
+```
+
+Comprobamos que pgloader ha creado correctamente el esquema employees y sus tablas dentro de la base de datos PostgreSQL.
+
+```
+isard@ahussain-servidor-psql:~$ sudo -u postgres psql employees
+
+[sudo] password for isard: 
+
+psql (18.1 (Ubuntu 18.1-1.pgdg24.04+2))
+
+Digite «help» para obtener ayuda.
+
+
+
+employees=# \dn
+
+      Listado de esquemas
+
+  Nombre   |       Dueño       
+
+-----------+-------------------
+
+ employees | postgres
+
+ public    | pg_database_owner
+
+(2 filas)
+
+
+
+employees=# \dt employees.*
+
+              Listado de tablas
+
+  Esquema  |    Nombre    | Tipo  |  Dueño   
+
+-----------+--------------+-------+----------
+
+ employees | departments  | tabla | postgres
+
+ employees | dept_emp     | tabla | postgres
+
+ employees | dept_manager | tabla | postgres
+
+ employees | employees    | tabla | postgres
+
+ employees | salaries     | tabla | postgres
+
+ employees | titles       | tabla | postgres
+
+(6 filas)
+
+
+
+employees=# 
+
+```
+
 
 ```
 
