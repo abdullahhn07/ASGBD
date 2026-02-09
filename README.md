@@ -357,6 +357,76 @@ postgres=#
 
 Usamos pgloader para migrar todas las tablas, datos y estructuras de la base de datos employees desde MySQL hacia PostgreSQL.
 
+```
+isard@ahussain-servidor-mysql:~$ pgloader \
+
+  mysql://abdullah:pirineus@localhost/employees \
+
+  postgresql://postgres:pirineus@192.168.1.2/employees
+
+2026-02-09T20:49:22.014000Z LOG pgloader version "3.6.d9ca38e"
+
+2026-02-09T20:49:22.508000Z LOG Migrating from #<MYSQL-CONNECTION mysql://abdullah@localhost:3306/employees {1005D19683}>
+
+2026-02-09T20:49:22.509000Z LOG Migrating into #<PGSQL-CONNECTION pgsql://postgres@192.168.1.2:5432/employees {10060C7A73}>
+
+2026-02-09T20:49:58.219002Z LOG report summary reset
+
+             table name     errors       rows      bytes      total time
+
+-----------------------  ---------  ---------  ---------  --------------
+
+        fetch meta data          0         21                     0.154s
+
+         Create Schemas          0          0                     0.007s
+
+       Create SQL Types          0          1                     0.027s
+
+          Create tables          0         12                     0.034s
+
+         Set Table OIDs          0          6                     0.016s
+
+-----------------------  ---------  ---------  ---------  --------------
+
+     employees.salaries          0    2844047    94.2 MB         24.834s
+
+       employees.titles          0     443308    16.9 MB          7.365s
+
+    employees.employees          0     300024    13.2 MB          6.604s
+
+  employees.departments          0          9     0.1 kB          1.480s
+
+     employees.dept_emp          0     331603    10.7 MB          2.743s
+
+ employees.dept_manager          0         24     0.8 kB          0.028s
+
+-----------------------  ---------  ---------  ---------  --------------
+
+COPY Threads Completion          0          4                    26.520s
+
+         Create Indexes          0          9                    10.190s
+
+ Index Build Completion          0          9                     5.503s
+
+        Reset Sequences          0          0                     2.249s
+
+           Primary Keys          0          6                     0.099s
+
+    Create Foreign Keys          0          6                     0.895s
+
+        Create Triggers          0          0                     0.001s
+
+        Set Search Path          0          1                     0.002s
+
+       Install Comments          0          0                     0.000s
+
+-----------------------  ---------  ---------  ---------  --------------
+
+      Total import time          ✓    3919015   134.9 MB         45.459s
+
+isard@ahussain-servidor-mysql:~$ 
+
+```
 
 
 
